@@ -9,6 +9,12 @@ const int MOD = 1000000007;
 
 vector<ll> factorial(N + 1);
 
+//GCD Calculation (a*b = LCM * GCD)
+ll gcd(ll a, ll b){
+    if(b==0) return a;
+    return gcd(b,a%b);
+}
+
 // Function to precompute factorials using modular arithmetic
 void precompute_factorials() {
     factorial[0] = 1;
