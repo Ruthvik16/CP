@@ -38,6 +38,48 @@ ll modular_inverse(ll a, ll mod) {
     return power(a, mod - 2, mod);
 }
 
+//Sieve Algorithm
+const int N = 1e7 + 10;
+vector<bool> isprime(N,1);
+vector<ll> hp(N);
+vector<ll> lp(N,0);
+void sieve(){
+    isprime[0] = isprime[1] = false;
+    for(ll i=2;i<N;i++){
+        if(isprime[i] == true){
+            lp[i] = hp [i] = i;
+            for(ll j=2*i;j<N;j+=i){
+                isprime[j] = false;
+                hp[j] = i;
+                if(lp[j]==0){
+                    lp[j] = i;
+                }
+            }
+        }
+    }
+}
+
+//Prime factors of a number using Sieve Algorithm
+vector<ll> primefactors(ll num){
+    vector<ll> prime_factors;
+    while(num>1){
+        ll prime_factor = hp[num];
+        while(num%prime_factor == 0){
+            prime_factors.push_back(prime_factor);
+            num/=prime_factor;
+        } 
+    }
+    return prime_factors;
+}
+
+//To find the divisors of a number
+vector<int> divisors[N1];
+for(ll i = 2;i<N1;i++){
+    for(ll i=i;j<N1;j+=i){
+        divisors[j].push_back(i);
+    }
+}
+
 
 //Depth First Search (DFS)
 vector<ll> g[N];
