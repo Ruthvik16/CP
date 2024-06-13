@@ -132,6 +132,7 @@ void djikstra(ll source){
         ll v_dist = node.first;
         s.erase(s.begin());
         if(vis[v]==1) continue;
+        vis[v] = 1;
         for(auto child : g[v]){
             ll child_v = child.first;
             ll wt = child.second;
