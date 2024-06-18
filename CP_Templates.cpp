@@ -168,7 +168,7 @@ void make(ll v){
 //Finds the parent of a Set, and sets all nodes in the set to the same parent
 ll find(ll v){
     if(parent[v] == v) return v;
-    return parent[v] = find(parent[v])
+    return parent[v] = find(parent[v]);
 }
 void Union(ll a,ll b){
     a = find(a);
