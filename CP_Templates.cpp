@@ -125,6 +125,24 @@ bool miller(ll n){
     return true;
 }
 
+//Binary Index Tree (Fenwick Tree), index bit[] array from 1
+void update(int i, int x){
+	while(i <= N){
+		bit[i] += x;
+		i = i + (i & (-i));
+	}
+}
+
+//O(logn)
+int sum(int i){
+	int ans = 0;
+	while(i != 0 && i > 0){
+		ans += bit[i];
+		i = (i & (i-1));
+	}
+	return ans;
+}
+
 
 
 //Depth First Search (DFS)
