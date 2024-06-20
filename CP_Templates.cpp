@@ -80,6 +80,52 @@ for(ll i = 2;i<N1;i++){
     }
 }
 
+//Multiplication of 64 bit numbers avoiding overflow (O(logb))
+long long multiply(long long a, long long b, long long m){
+	long long result = 0;
+	while(b>0){
+		if(b & 1){
+			result = result + a;
+			result %= m;
+		}
+		a <<= 1;
+		a %= m;
+		b >>= 1;
+	}
+	return result;
+}
+
+//Robin Miller Primality Test to know if a number is Prime (O(logn^3))
+bool miller(ll n){
+	if(n <=1 || n % 2 == 0){
+		if(n != 2){
+			return false;
+        }
+	}
+	if(n == 2 || n == 3) return true;
+	ll d = n-1;
+    while(d % 2 == 0){
+        d /= 2;
+    }
+	ll a[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37};
+	for(int i = 0; i < 12 && a[i] < n; ++i){
+		ll temp = d;
+        ll mod = power(a[i], temp, n);
+        if(mod == 1){
+            continue;
+ 		}
+        while(temp != n-1 && mod != n-1){
+            mod = multiply(mod, mod, n);
+            temp *= 2;
+	    }
+	    if(mod != n-1){
+	    	return false;
+	    }  
+    }
+    return true;
+}
+
+
 
 //Depth First Search (DFS)
 vector<ll> g[N];
