@@ -223,11 +223,11 @@ void floyd_warshall(ll no_of_vertices){
 
 //Disjoint Set Union(DSU)
 ll parent[N];
-ll size[N];
+ll siz[N];
 //Make a single Node
 void make(ll v){
     parent[v] = v;
-    size[v] = 1;
+    siz[v] = 1;
 }
 //Finds the parent of a Set, and sets all nodes in the set to the same parent
 ll find(ll v){
@@ -239,9 +239,9 @@ void Union(ll a,ll b){
     b = find(b);
     if(a!=b){
         //To alter the smaller set
-        if(size[a]<size[b]) swap(a,b);
+        if(siz[a]<siz[b]) swap(a,b);
         parent[b] = a;
-        size[a]+=size[b];
+        siz[a]+=siz[b];
     }
 }
 
