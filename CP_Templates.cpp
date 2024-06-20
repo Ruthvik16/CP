@@ -191,7 +191,7 @@ void djikstra(ll source){
     s.insert({0,source});
     dist[source] = 0;
     while(s.size()>0){
-        auto node = s.begin();
+        auto node = *s.begin();
         ll v = node.second;
         ll v_dist = node.first;
         s.erase(s.begin());
