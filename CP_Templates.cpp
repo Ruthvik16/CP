@@ -182,7 +182,7 @@ void bfs(ll source) {
     }
 }
 
-//Djikstras Algorithm O(NlogN)-> To find distance from a source to all the vertices in a weighted graph
+//Djikstras Algorithm O(ElogV)-> To find distance from a source to all the vertices in a weighted graph
 const int INF = 1e15;
 void djikstra(ll source){
     vector<ll> vis(N,0);
