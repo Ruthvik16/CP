@@ -213,7 +213,7 @@ void djikstra(ll source){
 ll dist[N][N]; //Initialize to INF
 void floyd_warshall(ll no_of_vertices){
     for(ll k=1;k<=no_of_vertices;k++){
-        for(ll i=1;i<=no_of_vertices){
+        for(ll i=1;i<=no_of_vertices;i++){
             for(ll j=1;j<=no_of_vertices;j++){
                 if(dist[i][k]!=INF && dist[k][j]!=INF)dist[i][j] = min(dist[i][j],dist[i][k]+dist[k][j]);
             }
